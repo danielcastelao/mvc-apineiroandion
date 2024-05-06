@@ -29,8 +29,15 @@ public class Model {
         Coche newCar = new Coche(matricula, modelo, velocidad);
         return newCar;
     }
-    //TODO : Metodo que guarde un coche en el array parking
 
+    /**
+     * Añade un coche al array parking
+     * @param coche
+     * @return true si se completo
+     */
+    public static boolean addCoche(Coche coche){
+        return parking.add(coche);
+    }
     /**
      * Metodo que devuelve un coche del array segun la maticula
      * que le introduzcas
