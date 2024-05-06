@@ -25,5 +25,10 @@ public class TestModel {
         Assertions.assertEquals(velocidad, coche.getVelocidad());
 
     }
+    @Test
+    public void comprobarAddCocheIntoParkingReturnTrue(){
+        Coche coche = Model.crearCoche("matricula", "modelo", 20);
+        Assertions.assertTrue(Model.addCoche(coche));
+    }
 
 }
