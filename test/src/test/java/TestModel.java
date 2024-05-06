@@ -18,7 +18,12 @@ public class TestModel {
 
     @Test
     public void cambiarVelocidadComprobarCambioReturnTrue(){
+        Coche coche = Model.crearCoche("matricula", "modelo", 20);
         Integer velocidad = 40;
+        Model.parking.add(coche);
+        Model.cambiarVelocidad("matricula", velocidad);
+        Assertions.assertEquals(velocidad, coche.getVelocidad());
 
     }
+
 }
