@@ -10,7 +10,7 @@ public class Model {
     /**
      * Array List estatico con los coches guardados ene lñ parking
      */
-    public static ArrayList<Coche> parking = new ArrayList<>();
+    public ArrayList<Coche> parking = new ArrayList<>();
 
     /**
      * Constructor
@@ -25,7 +25,7 @@ public class Model {
      * @param velocidad
      * @return nuevo Coche
      */
-    public static Coche crearCoche(String matricula, String modelo, Integer velocidad){
+    public Coche crearCoche(String matricula, String modelo, Integer velocidad){
         Coche newCar = new Coche(matricula, modelo, velocidad);
         return newCar;
     }
@@ -35,7 +35,7 @@ public class Model {
      * @param coche
      * @return true si se completo
      */
-    public static boolean addCoche(Coche coche){
+    public boolean addCoche(Coche coche){
         return parking.add(coche);
     }
     /**
@@ -44,7 +44,7 @@ public class Model {
      * @param matricula
      * @return Coche seleccionado del parking
      */
-    public static Coche getCoche(String matricula){
+    public Coche getCoche(String matricula){
         for(Coche coche : parking){
             if(coche.getMatricula().equals(matricula)){
                 return coche;
@@ -59,7 +59,7 @@ public class Model {
      * @param velocidad
      * @return OK si se cambio la velocidad
      */
-    public static boolean cambiarVelocidad(String matricula, Integer velocidad){
+    public boolean cambiarVelocidad(String matricula, Integer velocidad){
         Coche coche = getCoche(matricula);
         coche.setVelocidad(velocidad);
         return true;
@@ -71,7 +71,7 @@ public class Model {
      * @param matricula
      * @return Integer velocidad del coche
      */
-    public static Integer getVelocidad(String matricula){
+    public Integer getVelocidad(String matricula){
         Coche coche = getCoche(matricula);
         return coche.getVelocidad();
     }
@@ -80,7 +80,7 @@ public class Model {
      * getParking
      * @return
      */
-    public static ArrayList<Coche> getParking() {
+    public ArrayList<Coche> getParking() {
         return parking;
     }
 
@@ -88,7 +88,7 @@ public class Model {
      * setParking
      * @param parking
      */
-    public static void setParking(ArrayList<Coche> parking) {
-        Model.parking = parking;
+    public void setParking(ArrayList<Coche> parking) {
+        this.parking = parking;
     }
 }
