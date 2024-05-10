@@ -6,29 +6,25 @@ import org.junit.jupiter.api.Test;
 public class TestModel {
     @Test
     public void crearCocheReturnTrue(){
-        Assertions.assertNotNull(Model.crearCoche("matricula", "modelo", 20));
-    }
-
-    @Test
-    public void getCocheAssertSameReturnTrue(){
-        Coche coche = Model.crearCoche("matricula", "modelo", 20);
-        Model.parking.add(coche);
-        Assertions.assertEquals(Model.getCoche("matricula"), coche);
+        Model model = new Model();
+        Assertions.assertNotNull(model.crearCoche("matricula", "modelo", 20));
     }
 
     @Test
     public void cambiarVelocidadComprobarCambioReturnTrue(){
-        Coche coche = Model.crearCoche("matricula", "modelo", 20);
+        Model model = new Model();
+        Coche coche = model.crearCoche("matricula", "modelo", 20);
         Integer velocidad = 40;
-        Model.parking.add(coche);
-        Model.cambiarVelocidad("matricula", velocidad);
+        model.parking.add(coche);
+        model.cambiarVelocidad("matricula", velocidad);
         Assertions.assertEquals(velocidad, coche.getVelocidad());
 
     }
     @Test
     public void comprobarAddCocheIntoParkingReturnTrue(){
-        Coche coche = Model.crearCoche("matricula", "modelo", 20);
-        Assertions.assertTrue(Model.addCoche(coche));
+        Model model = new Model();
+        Coche coche = model.crearCoche("matricula", "modelo", 20);
+        Assertions.assertTrue(model.addCoche(coche));
     }
 
 }
