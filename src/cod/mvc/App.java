@@ -1,5 +1,9 @@
 package cod.mvc;
 
+import cod.mvc.controller.Controller;
+import cod.mvc.model.Model;
+import cod.mvc.view.View;
+
 /**
  * Clase App que inicia el programa y pasa el control al controller
  */
