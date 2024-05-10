@@ -1,4 +1,8 @@
-package cod.mvc;
+package cod.mvc.controller;
+
+import cod.mvc.model.Coche;
+import cod.mvc.model.Model;
+import cod.mvc.view.View;
 
 /**
  * Esta calse actua como Controller, y dispone de los metodos necesarios para controlar el funcionamiento de la

@@ -1,4 +1,4 @@
-package cod.mvc;
+package cod.mvc.view;
 
 /**
  * Clase con la interfaz y que muetra/recibe datos del usuario
