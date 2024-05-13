@@ -9,17 +9,23 @@ import cod.mvc.view.View;
  * aplicacion
  */
 public class Controller {
-    private Model model;
-    private View view;
+    private ObservadorVelocidad observerVelocidad;
+    private Model model = new Model();
+    private View view = new View();
 
-    public Controller(Model model, View view) {
-        this.model = model;
-        this.view = view;
+
+    public Controller() {
     }
+
 
     public void updateView(){
         Coche coche = model.crearCoche("123456", "modeloDelCoche", 15);
         View view = new View();
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
+    }
+
+    public ObservadorVelocidad addObserverVelocidad(ObservadorVelocidad observerVelocidad) {
+        model.addObserver(observerVelocidad);
+        return observerVelocidad;
     }
 }

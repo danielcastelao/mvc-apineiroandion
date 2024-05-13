@@ -12,7 +12,7 @@ public class View {
      * @param velocidad
      * @return true
      */
-    public boolean muestraVelocidad(String matricula, Integer velocidad) {
+    public static boolean muestraVelocidad(String matricula, Integer velocidad) {
         System.out.println("Matricula: " + matricula + " Velocidad: " + velocidad);
         return true;
     }

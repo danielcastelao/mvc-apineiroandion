@@ -1,6 +1,7 @@
 package cod.mvc;
 
 import cod.mvc.controller.Controller;
+import cod.mvc.controller.ObservadorVelocidad;
 import cod.mvc.model.Model;
 import cod.mvc.view.View;
 
@@ -9,7 +10,8 @@ import cod.mvc.view.View;
  */
 public class App {
     public static void main(String[] args) {
-        Controller controller = new Controller(new Model(), new View());
+        Controller controller = new Controller();
+        controller.addObserverVelocidad(controller.addObserverVelocidad(new ObservadorVelocidad()));
         controller.updateView();
     }
 }

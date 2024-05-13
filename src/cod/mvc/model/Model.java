@@ -1,12 +1,18 @@
 package cod.mvc.model;
 
+import cod.mvc.controller.Observer;
+
 import java.util.ArrayList;
 
 /**
  * Esta clase funciona como MOdel, contiene el arary de coches
  * y los metodos para gestionar el programa
  */
-public class Model {
+public class Model implements Observable{
+    /**
+     * ArrayListe de observers
+     */
+    private static final ArrayList<Observer> observers = new ArrayList<>();
     /**
      * Array List estatico con los coches guardados ene lñ parking
      */
@@ -16,6 +22,27 @@ public class Model {
      * Constructor
      */
     public Model() {
+    }
+
+    @Override
+    public ArrayList<Observer> getObservers() {
+        return null;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(Coche coche) {
+        for (Observer observer : observers) {
+            observer.update(coche);
+        }
     }
 
     /**
@@ -62,6 +89,7 @@ public class Model {
     public boolean cambiarVelocidad(String matricula, Integer velocidad){
         Coche coche = getCoche(matricula);
         coche.setVelocidad(velocidad);
+        notifyObservers(getCoche(matricula));
         return true;
     }
 
