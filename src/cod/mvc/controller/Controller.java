@@ -10,6 +10,7 @@ import cod.mvc.view.View;
  */
 public class Controller {
     private ObservadorVelocidad observerVelocidad;
+    ObservadorVelocidadLimite observadorVelocidadLimite;
     private Model model;
     private View view;
 
@@ -22,8 +23,11 @@ public class Controller {
         this.view = view;
         //instanciamos observador de velocidad
         observerVelocidad = new ObservadorVelocidad();
-        //añadimos el observador a la lista de observadores
+        //instanciamos observador de bvelocidad limite
+        observadorVelocidadLimite = new ObservadorVelocidadLimite();
+        //añadimos los observadores a la lista de observadores
         model.addObserver(observerVelocidad);
+        model.addObserver(observadorVelocidadLimite);
         //creamos un coche
         Coche coche = model.crearCoche("123456", "modeloDelCoche", 15);
         //añadimos el coche al parking
@@ -32,6 +36,9 @@ public class Controller {
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
         //cambiamos la velocidad del coche
         cambiarVelocidad(coche.getMatricula(), 20);
+        //cambiamos a una velocidad a mas 120
+        cambiarVelocidad(coche.getMatricula(), 130);
+        view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
 
     }
 
