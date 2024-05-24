@@ -41,7 +41,7 @@ public class Model implements Observable{
     @Override
     public void notifyObservers(Coche coche) {
         for (Observer observer : observers) {
-            observer.update(coche);
+            observer.update(coche, this);
         }
     }
 
