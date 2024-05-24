@@ -10,13 +10,30 @@ import cod.mvc.view.View;
  */
 public class Controller {
     private ObservadorVelocidad observerVelocidad;
-    private Model model = new Model();
-    private View view = new View();
+    private Model model;
+    private View view;
 
 
     public Controller() {
     }
 
+    public Controller(Model model, View view) {
+        this.model = model;
+        this.view = view;
+        //instanciamos observador de velocidad
+        observerVelocidad = new ObservadorVelocidad();
+        //añadimos el observador a la lista de observadores
+        model.addObserver(observerVelocidad);
+        //creamos un coche
+        Coche coche = model.crearCoche("123456", "modeloDelCoche", 15);
+        //añadimos el coche al parking
+        model.parking.add(coche);
+        //mostramos la velocidad del coche
+        view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
+        //cambiamos la velocidad del coche
+        cambiarVelocidad(coche.getMatricula(), 20);
+
+    }
 
     public void updateView(){
         Coche coche = model.crearCoche("123456", "modeloDelCoche", 15);
@@ -24,8 +41,15 @@ public class Controller {
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
     }
 
-    public ObservadorVelocidad addObserverVelocidad(ObservadorVelocidad observerVelocidad) {
-        model.addObserver(observerVelocidad);
-        return observerVelocidad;
+    public void cambiarVelocidad(String matricula, int nuevaVelocidad) {
+        Coche coche = model.getCoche(matricula);
+        if (coche != null) {
+            coche.setVelocidad(nuevaVelocidad);
+            //notificamos a los observadores
+            notifyObserversVelocidad(coche);
+        }
+    }
+    public void notifyObserversVelocidad(Coche coche) {
+        model.notifyObservers(coche);
     }
 }
