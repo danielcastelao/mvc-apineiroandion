@@ -37,7 +37,7 @@ public class Controller {
         //cambiamos la velocidad del coche
         cambiarVelocidad(coche.getMatricula(), 20);
         //cambiamos a una velocidad a mas 120
-        cambiarVelocidad(coche.getMatricula(), 130);
+        cambiarVelocidad(coche.getMatricula(), 180);
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
 
     }
