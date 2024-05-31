@@ -19,9 +19,26 @@ public class Model implements Observable{
     public ArrayList<Coche> parking = new ArrayList<>();
 
     /**
-     * Constructor
+     * Singelton
      */
-    public Model() {
+    private static Model instance;
+
+
+    /**
+     * Constructor privado
+     */
+    private Model() {
+    }
+
+    /**
+     * Metodo que devuelve la instancia de Model
+     * @return instance
+     */
+    public static Model getInstance() {
+        if (instance == null) {
+            instance = new Model();
+        }
+        return instance;
     }
 
     @Override
