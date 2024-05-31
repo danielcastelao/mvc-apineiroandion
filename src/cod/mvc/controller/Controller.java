@@ -39,6 +39,7 @@ public class Controller {
         //cambiamos a una velocidad a mas 120
         cambiarVelocidad(coche.getMatricula(), 180);
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
+        buscarCoche(getMatricula());
 
     }
 
@@ -58,5 +59,28 @@ public class Controller {
     }
     public void notifyObserversVelocidad(Coche coche) {
         model.notifyObservers(coche);
+    }
+
+    /**
+     * Metodo que recibe una matricula, y utiliza el metodo de model para devolver el coche con esa matricula
+     * y luego lo muestra con el metodo de la vista muestra velocidad
+     * @param matricula
+     * @return boolean
+     */
+    public boolean buscarCoche(String matricula) {
+        Coche coche = model.getCoche(matricula);
+        if (coche != null) {
+            view.muestraCoche(coche.getMatricula(),coche.getModelo(), coche.getVelocidad());
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Metoodo que recoge la matricula con un JOptionPane y la devuleve
+     * @return String
+     */
+    public String getMatricula() {
+        return view.getMatricula();
     }
 }
