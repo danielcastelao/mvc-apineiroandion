@@ -25,6 +25,8 @@ classDiagram
     }
       class Controller{
           +main()
+          +subirVelocidad(String, Integer): boolean
+          +bajarVelocidad(String, Integer): boolean
       }
       class View {+muestraVelocidad(String, Integer)}
       class Model {
@@ -56,6 +58,14 @@ sequenceDiagram
     activate Model
     Model-->>Controller: Creado!
     deactivate Model
+    Controller->>Model: sube la velocidad del coche
+    activate Model
+    Model-->>Controller: Subida!
+    deactivate Model
+    Controller->>Model: baja la velocidad del coche
+    activate Model
+    Model-->>Controller: Bajada!
+    deactivate Model
     Controller->>+View: Muestra la velocidad, porfa
     activate View
     View->>-View: Mostrando velocidad
@@ -73,6 +83,14 @@ sequenceDiagram
     Controller->>Model: crearCoche("Mercedes", "BXK 1234")
     activate Model
     Model-->>Controller: Coche
+    deactivate Model
+    Controller->>Model: subirVelocidad("BXK 1234", 100)
+    activate Model
+    Model-->>Controller: boolean
+    deactivate Model
+    Controller->>Model: bajarVelocidad("BXK 1234", 20)
+    activate Model
+    Model-->>Controller: boolean
     deactivate Model
     Controller->>+View: muestraVelocidad("BXK 1234", velocidad)
     activate View
