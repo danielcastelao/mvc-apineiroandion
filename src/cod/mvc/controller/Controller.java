@@ -39,6 +39,7 @@ public class Controller {
         //cambiamos a una velocidad a mas 120
         cambiarVelocidad(coche.getMatricula(), 180);
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
+        subirVelocidad(coche.getMatricula(), 10);
 
     }
 
@@ -58,5 +59,22 @@ public class Controller {
     }
     public void notifyObserversVelocidad(Coche coche) {
         model.notifyObservers(coche);
+    }
+
+    /**
+     * Metodo que suma la velocidad indicada a un coche
+     * @param matricula
+     * @param velocidad
+     * @return true si se completo
+     */
+    public boolean subirVelocidad(String matricula, Integer velocidad) {
+        Coche coche = model.getCoche(matricula);
+        if (coche != null) {
+            coche.setVelocidad(coche.getVelocidad() + velocidad);
+            //Notificamos a los observadores para mostrar la velocidad
+            notifyObserversVelocidad(coche);
+            return true;
+        }
+        return false;
     }
 }
