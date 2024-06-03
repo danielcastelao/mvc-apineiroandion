@@ -40,6 +40,7 @@ public class Controller {
         cambiarVelocidad(coche.getMatricula(), 180);
         view.muestraVelocidad(coche.getMatricula(), coche.getVelocidad());
         subirVelocidad(coche.getMatricula(), 10);
+        bajarVelocidad(coche.getMatricula(), 5);
 
     }
 
@@ -71,6 +72,22 @@ public class Controller {
         Coche coche = model.getCoche(matricula);
         if (coche != null) {
             coche.setVelocidad(coche.getVelocidad() + velocidad);
+            //Notificamos a los observadores para mostrar la velocidad
+            notifyObserversVelocidad(coche);
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Metodo que baja la velocidad indicada a un coche
+     * @param matricula
+     * @param velocidad
+     * @return true si se completo
+     */
+    public boolean bajarVelocidad(String matricula, Integer velocidad) {
+        Coche coche = model.getCoche(matricula);
+        if (coche != null) {
+            coche.setVelocidad(coche.getVelocidad() - velocidad);
             //Notificamos a los observadores para mostrar la velocidad
             notifyObserversVelocidad(coche);
             return true;
